@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrueLife Matrimony — Connecting Hearts, Creating Futures</title>
+    <meta
+      name="description"
+      content="TrueLife Matrimony — Connecting Hearts, Creating Futures. A trusted place to find your life partner. Launching soon."
+    />
+
+    <!-- Open Graph / social preview -->
+    <meta property="og:title" content="TrueLife Matrimony" />
+    <meta
+      property="og:description"
+      content="Connecting Hearts, Creating Futures. Launching soon."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://truelifematrimony.com" />
+    <meta property="og:image" content="assets/hero.jpg" />
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%9E%3C/text%3E%3C/svg%3E" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary: #7209b7;
+        --primary-light: #b5179e;
+        --accent: #d4af37;
+        --ink: #1c1327;
+        --muted: #6b6b83;
+        --surface: rgba(255, 255, 255, 0.72);
+        --border: rgba(255, 255, 255, 0.55);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        color: var(--ink);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background:
+          radial-gradient(circle at 15% 20%, rgba(181, 23, 158, 0.18), transparent 45%),
+          radial-gradient(circle at 85% 75%, rgba(114, 9, 183, 0.22), transparent 45%),
+          linear-gradient(135deg, #fdf7fb 0%, #f5eefc 45%, #f9f2f7 100%);
+        overflow-x: hidden;
+      }
+
+      /* Decorative floating hearts */
+      .bg-hearts {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .bg-hearts span {
+        position: absolute;
+        bottom: -60px;
+        font-size: 22px;
+        color: rgba(181, 23, 158, 0.16);
+        animation: rise linear infinite;
+      }
+
+      @keyframes rise {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-115vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* Layout */
+      header,
+      main,
+      footer {
+        position: relative;
+        z-index: 1;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.75rem clamp(1.25rem, 5vw, 4rem);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: 0.5px;
+        color: var(--primary);
+      }
+
+      .brand .mark {
+        display: inline-grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--primary-light));
+        color: #fff;
+        font-size: 1.1rem;
+      }
+
+      .pill {
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--primary);
+        background: rgba(114, 9, 183, 0.08);
+        border: 1px solid rgba(114, 9, 183, 0.18);
+        padding: 0.45rem 0.9rem;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem clamp(1.25rem, 5vw, 4rem) 3rem;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        align-items: center;
+        gap: clamp(2rem, 5vw, 4.5rem);
+        width: min(1120px, 100%);
+      }
+
+      .hero__content {
+        text-align: left;
+      }
+
+      .hero__photo {
+        margin: 0;
+        position: relative;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow:
+          0 30px 60px -30px rgba(114, 9, 183, 0.55),
+          0 8px 24px -12px rgba(28, 19, 39, 0.35);
+      }
+
+      .hero__photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 22px;
+        pointer-events: none;
+      }
+
+      .hero__photo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 16 / 10;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.78rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+      }
+
+      .eyebrow::before,
+      .eyebrow::after {
+        content: "";
+        width: 32px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--accent));
+      }
+      .eyebrow::after {
+        background: linear-gradient(90deg, var(--accent), transparent);
+      }
+
+      h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+        font-size: clamp(2.6rem, 7vw, 5rem);
+        line-height: 1.05;
+        letter-spacing: 0.5px;
+        margin-bottom: 1.25rem;
+      }
+
+      h1 .accent {
+        background: linear-gradient(120deg, var(--primary), var(--primary-light));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-style: italic;
+      }
+
+      .tagline {
+        font-size: clamp(1rem, 2.4vw, 1.35rem);
+        color: var(--muted);
+        max-width: 42ch;
+        margin: 0 0 2.5rem;
+        font-weight: 300;
+        line-height: 1.6;
+      }
+
+      /* Notify form */
+      .notify {
+        display: flex;
+        gap: 0.6rem;
+        width: min(100%, 460px);
+        background: var(--surface);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.4rem 0.4rem 0.4rem 1.3rem;
+        box-shadow: 0 20px 45px -25px rgba(114, 9, 183, 0.6);
+      }
+
+      .notify input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        font-size: 0.95rem;
+        color: var(--ink);
+        outline: none;
+      }
+
+      .notify input::placeholder {
+        color: #9a91a8;
+      }
+
+      .notify button {
+        border: none;
+        cursor: pointer;
+        border-radius: 999px;
+        padding: 0.75rem 1.5rem;
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #fff;
+        background: linear-gradient(120deg, var(--primary), var(--primary-light));
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        white-space: nowrap;
+      }
+
+      .notify button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 24px -10px rgba(114, 9, 183, 0.7);
+      }
+
+      .form-note {
+        margin-top: 0.9rem;
+        font-size: 0.8rem;
+        color: var(--muted);
+        min-height: 1.2em;
+      }
+
+      .form-note.success {
+        color: #1a7f5a;
+        font-weight: 500;
+      }
+
+      /* Trust badges */
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 1.75rem;
+        margin-top: 3rem;
+      }
+
+      .badge {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.35rem;
+        color: var(--muted);
+        font-size: 0.82rem;
+        letter-spacing: 0.03em;
+      }
+
+      .badge b {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem clamp(1.25rem, 5vw, 4rem);
+        font-size: 0.82rem;
+        color: var(--muted);
+        border-top: 1px solid rgba(114, 9, 183, 0.1);
+      }
+
+      footer a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 900px) {
+        main {
+          padding-top: 1rem;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 2.25rem;
+          max-width: 560px;
+        }
+        .hero__content {
+          text-align: center;
+        }
+        .hero__photo {
+          order: -1;
+        }
+        .tagline {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .badges {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .notify {
+          flex-direction: column;
+          border-radius: 20px;
+          padding: 0.8rem;
+        }
+        .notify input {
+          padding: 0.6rem 0.4rem;
+          text-align: center;
+        }
+        .notify button {
+          width: 100%;
+          padding: 0.85rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .bg-hearts span {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-hearts" aria-hidden="true" id="hearts"></div>
+
+    <header>
+      <div class="brand">
+        <span class="mark">&#10084;</span>
+        TrueLife Matrimony
+      </div>
+      <span class="pill">Launching Soon</span>
+    </header>
+
+    <main>
+      <div class="hero">
+        <div class="hero__content">
+          <span class="eyebrow">TrueLife Matrimony</span>
+          <h1>
+            Connecting Hearts,<br />
+            <span class="accent">Creating Futures</span>
+          </h1>
+          <p class="tagline">
+            A trusted, modern space to find your life partner. We're putting the
+            final touches on something beautiful — launching very soon.
+          </p>
+
+          <div class="badges">
+            <div class="badge"><b>100%</b><span>Verified Profiles</span></div>
+            <div class="badge"><b>Private</b><span>&amp; Secure</span></div>
+            <div class="badge"><b>Free</b><span>To Get Started</span></div>
+          </div>
+        </div>
+
+        <figure class="hero__photo">
+          <img
+            src="assets/hero.jpg"
+            alt="A bride and groom sharing a tender moment at golden hour"
+            width="1280"
+            height="720"
+            loading="eager"
+          />
+        </figure>
+      </div>
+    </main>
+
+    <footer>
+      <span>&copy; <span id="year"></span> TrueLife Matrimony. All rights reserved.</span>
+      <span>
+        Contact:
+        <a href="mailto:hello@truelifematrimony.com">hello@truelifematrimony.com</a>
+      </span>
+    </footer>
+
+    <script>
+      // Current year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Floating hearts
+      const hearts = document.getElementById("hearts");
+      const HEART_COUNT = 14;
+      for (let i = 0; i < HEART_COUNT; i++) {
+        const s = document.createElement("span");
+        s.textContent = "\u2764";
+        s.style.left = Math.random() * 100 + "vw";
+        s.style.fontSize = 14 + Math.random() * 26 + "px";
+        s.style.animationDuration = 10 + Math.random() * 14 + "s";
+        s.style.animationDelay = Math.random() * 12 + "s";
+        hearts.appendChild(s);
+      }
+    </script>
+  </body>
+</html>
